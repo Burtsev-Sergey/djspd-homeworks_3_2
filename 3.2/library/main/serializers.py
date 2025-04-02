@@ -1,10 +1,13 @@
 from rest_framework import serializers
+from main.models import Book, Order
 
 
 class BookSerializer(serializers.ModelSerializer):
-    # реализуйте сериализацию объектов модели Book
-    ...
+    class Meta:
+        model = Book
+        fields = ['id', 'author', 'title', 'year']
 
+    
     #доп задание
     # def to_representation(self, instance):
     #     representation = super().to_representation(instance)
@@ -13,8 +16,11 @@ class BookSerializer(serializers.ModelSerializer):
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    # добавьте поля модели Order
-    ...
+    books = BookSerializer(many=True, read_only=True) 
+    class Meta:
+        model = Order
+        fields = ['user_name', 'days_count', 'date', 'books']
+    
 
     #доп задание
     # def to_representation(self, instance):

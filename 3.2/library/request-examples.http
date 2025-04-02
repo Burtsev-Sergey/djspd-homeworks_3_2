@@ -2,14 +2,16 @@
 
 @baseUrl = http://localhost:8000/api/v1
 
+# BOOK
+
 # создание книги
-POST {{baseUrl}}/books/create/
+POST {{baseUrl}}/books/create/  
 Content-Type: application/json
 
 {
-  "author": "Николай Васильевич Гоголь",
-  "title": "Мёртвые души",
-  "year": 1843
+  "author": "Михаил Юрьевич Лермонтов",
+  "title": "Мцыри",
+  "year": 1849
 }
 
 ###
@@ -21,26 +23,29 @@ Content-Type: application/json
 ###
 
 # получение одной книги
-GET {{baseUrl}}/books/1/
+GET {{baseUrl}}/books/12/
 Content-Type: application/json
 
 ###
 
 # обновление книги
-PATCH {{baseUrl}}/books/update/1/
+PATCH {{baseUrl}}/books/update/12/
 Content-Type: application/json
 
 {
-  "year": 1842
+  "year": 1850
 }
 
 ###
 
 # удаление книги
-DELETE {{baseUrl}}/books/delete/1/
+DELETE {{baseUrl}}/books/delete/13/
 Content-Type: application/json
 
 ###
+
+
+# ORDER
 
 # создание заказа
 POST {{baseUrl}}/orders/
@@ -66,7 +71,7 @@ Content-Type: application/json
 
 ###
 
-# обновление книги
+# обновление заказа
 PATCH {{baseUrl}}/orders/1/
 Content-Type: application/json
 
@@ -76,7 +81,7 @@ Content-Type: application/json
 
 ###
 
-# удаление книги
+# удаление заказа
 DELETE {{baseUrl}}/orders/1/
 Content-Type: application/json
 
