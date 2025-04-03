@@ -52,9 +52,9 @@ POST {{baseUrl}}/orders/
 Content-Type: application/json
 
 {
-  "user_name": "Иван Петров",
-  "days_count": 2,
-  "books": [1, 2]
+  "user_name": "Петр Иванов",
+  "days_count": 3,
+  "books": [11]
 }
 
 ###
@@ -66,23 +66,23 @@ Content-Type: application/json
 ###
 
 # получение одного заказа
-GET {{baseUrl}}/orders/1/
+GET {{baseUrl}}/orders/3/
 Content-Type: application/json
 
 ###
 
 # обновление заказа
-PATCH {{baseUrl}}/orders/1/
+PATCH {{baseUrl}}/orders/5/
 Content-Type: application/json
 
 {
-  "days_count": 3
+  "days_count": 6
 }
 
 ###
 
 # удаление заказа
-DELETE {{baseUrl}}/orders/1/
+DELETE {{baseUrl}}/orders/4/
 Content-Type: application/json
 
 ###

@@ -19,7 +19,7 @@ class OrderSerializer(serializers.ModelSerializer):
     books = BookSerializer(many=True, read_only=True) 
     class Meta:
         model = Order
-        fields = ['user_name', 'days_count', 'date', 'books']
+        fields = ['id', 'user_name', 'days_count', 'date', 'books']
     
 
     #доп задание

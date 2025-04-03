@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 
 from main.models import Book, Order
-from main.serializers import BookSerializer
+from main.serializers import BookSerializer, OrderSerializer
 
 
 # Реализация получения списка всех книг.
@@ -50,5 +50,7 @@ class BookDeleteView(DestroyAPIView):
 
 
 class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
     # реализуйте CRUD для заказов
     ...
