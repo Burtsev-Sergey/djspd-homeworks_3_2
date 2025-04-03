@@ -9,9 +9,9 @@ POST {{baseUrl}}/books/create/
 Content-Type: application/json
 
 {
-  "author": "Михаил Юрьевич Лермонтов",
-  "title": "Мцыри",
-  "year": 1849
+  "author": "Лев Николаевич Толстой",
+  "title": "Война и мир",
+  "year": 1869
 }
 
 ###
@@ -23,13 +23,13 @@ Content-Type: application/json
 ###
 
 # получение одной книги
-GET {{baseUrl}}/books/12/
+GET {{baseUrl}}/books/13/
 Content-Type: application/json
 
 ###
 
 # обновление книги
-PATCH {{baseUrl}}/books/update/12/
+PATCH {{baseUrl}}/books/update/13/
 Content-Type: application/json
 
 {
@@ -39,7 +39,7 @@ Content-Type: application/json
 ###
 
 # удаление книги
-DELETE {{baseUrl}}/books/delete/13/
+DELETE {{baseUrl}}/books/delete/15/
 Content-Type: application/json
 
 ###
@@ -52,9 +52,9 @@ POST {{baseUrl}}/orders/
 Content-Type: application/json
 
 {
-  "user_name": "Петр Иванов",
-  "days_count": 3,
-  "books": [11]
+  "user_name": "Ольга Кретова",
+  "days_count": 12,
+  "books": [15]
 }
 
 ###
@@ -66,7 +66,7 @@ Content-Type: application/json
 ###
 
 # получение одного заказа
-GET {{baseUrl}}/orders/3/
+GET {{baseUrl}}/orders/7/
 Content-Type: application/json
 
 ###
@@ -82,7 +82,7 @@ Content-Type: application/json
 ###
 
 # удаление заказа
-DELETE {{baseUrl}}/orders/4/
+DELETE {{baseUrl}}/orders/11/
 Content-Type: application/json
 
 ###

@@ -49,8 +49,29 @@ class BookDeleteView(DestroyAPIView):
         return Response({'message': 'Книга успешно удалена.'}, status=status.HTTP_204_NO_CONTENT)
 
 
+# Реализация CRUD для заказов
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
-    # реализуйте CRUD для заказов
-    ...
+
+    def create(self, request, *args, **kwargs):
+      data = request.data.copy()
+      book_ids = data.pop('books', [])
+
+      # Создаем заказ без книг
+      serializer = self.get_serializer(data=data)
+      if serializer.is_valid():
+        order = serializer.save()
+
+        # Добавляем книги к заказу после его создания
+        if book_ids:
+          books = Book.objects.filter(id__in=book_ids)
+          if len(books) != len(book_ids):
+            return Response({'error': 'Одна или несколько указанных книг не существует.'}, status=status.HTTP_400_BAD_REQUEST)
+          order.books.set(books)
+
+        # Подготовка ответа
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+      else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
